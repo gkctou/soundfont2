@@ -1,5 +1,5 @@
 {
-  "name": "soundfont2",
+  "name": "@gkctou/soundfont2",
   "version": "1.0.1",
   "description": "A SoundFont2 parser for Node.js and web browsers",
   "main": "lib/SoundFont2.node.js",
@@ -12,8 +12,11 @@
     "midi",
     "synthesizer"
   ],
-  "author": "Maarten Zuidhoorn <maarten@zuidhoorn.com>",
-  "repository": "https://github.com/Mrtenz/soundfont2.git",
+  "author": "Jason Chen <gkctou@gmail.com>",
+  "repository": "https://github.com/gkctou/soundfont2",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
   "license": "MIT",
   "scripts": {
     "tslint": "tslint --project .",
