@@ -62,7 +62,8 @@
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
     "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "yarn": "^1.22.4"
   },
   "lint-staged": {
     "*.ts": [
@@ -75,5 +76,8 @@
       "post-commit": "git update-index --again",
       "pre-commit": "yarn run tslint && yarn run test && lint-staged"
     }
+  },
+  "dependencies": {
+    "@exodus/text-encoding-utf8": "^1.0.2"
   }
 }

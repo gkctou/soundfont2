@@ -29,41 +29,55 @@ export class SoundFont2 {
    * The raw RIFF chunk data.
    */
   public readonly chunk: SF2Chunk;
-
+  private _metaData?: MetaData;
   /**
    * The meta data.
    */
-  public readonly metaData: MetaData;
-
+  public get metaData(): MetaData {
+    return this._metaData || (this._metaData = this.chunk.subChunks[0].getMetaData());
+  }
+  private _sampleData?: Uint8Array;
   /**
    * The raw sample data.
    */
-  public readonly sampleData: Uint8Array;
-
+  public get sampleData(): Uint8Array {
+    return this._sampleData || (this._sampleData = this.chunk.subChunks[1].getSampleData());
+  }
+  private _samples?: Sample[];
   /**
    * The parsed samples.
    */
-  public readonly samples: Sample[];
-
+  public get samples(): Sample[] {
+    return this._samples || (this._samples = this.getSamples());
+  }
+  private _presetData?: PresetData;
   /**
    * The unparsed preset data.
    */
-  public readonly presetData: PresetData;
-
+  public get presetData(): PresetData {
+    return this._presetData || (this._presetData = this.chunk.subChunks[2].getPresetData())
+  }
+  private _instruments?: Instrument[];
   /**
    * The parsed instuments.
    */
-  public readonly instruments: Instrument[];
-
+  public get instruments(): Instrument[] {
+    return this._instruments || (this._instruments = this.getInstruments());
+  }
+  private _presets?: Preset[];
   /**
    * The parsed presets.
    */
-  public readonly presets: Preset[];
-
+  public get presets(): Preset[] {
+    return this._presets || (this._presets = this.getPresets());
+  }
+  private _banks?: Bank[];
   /**
    * The parsed banks.
    */
-  public readonly banks: Bank[];
+  public get banks(): Bank[] {
+    return this._banks || (this._banks = this.getBanks());
+  }
 
   /**
    * Load a SoundFont2 file from a `Uint8Array` or a `SF2Chunk`. The recommended way is to use a
@@ -87,14 +101,14 @@ export class SoundFont2 {
     }
 
     this.chunk = chunk;
-    this.metaData = chunk.subChunks[0].getMetaData();
-    this.sampleData = chunk.subChunks[1].getSampleData();
-    this.presetData = chunk.subChunks[2].getPresetData();
+    // this.metaData = chunk.subChunks[0].getMetaData();
+    // this.sampleData = chunk.subChunks[1].getSampleData();
+    // this.presetData = chunk.subChunks[2].getPresetData();
 
-    this.samples = this.getSamples();
-    this.instruments = this.getInstruments();
-    this.presets = this.getPresets();
-    this.banks = this.getBanks();
+    // this.samples = this.getSamples();
+    // this.instruments = this.getInstruments();
+    // this.presets = this.getPresets();
+    // this.banks = this.getBanks();
   }
 
   /**
