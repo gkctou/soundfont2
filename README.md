@@ -1,3 +1,5 @@
+source version 0.3.0, add TextDecoder polify for nodejs 8 and change sf2 props to lazy loading, no caculate if you dont need access it.ex: get metadata only.
+
 # soundfont2
 
 This is a SoundFont2 parser (and soon to be editor), written in TypeScript. It works in Node.js and (modern) web browsers. The parser is based on the [SoundFont 2.01 specification](http://www.synthfont.com/SFSPEC21.PDF), but is currently not fully compliant yet. The end goal is to be fully compliant with the [SoundFont 2.04 specification](http://www.synthfont.com/sfspec24.pdf).
